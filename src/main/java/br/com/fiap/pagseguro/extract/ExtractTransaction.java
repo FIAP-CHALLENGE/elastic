@@ -36,9 +36,9 @@ public class ExtractTransaction {
 
         selectParameters.add(actualBetweenStart);
         selectParameters.add(actualBetweenEnd);
-
-
+        
         return selectParameters;
+
     }
 
 }

@@ -65,7 +65,7 @@ public class TransactionVO {
     }
 
     public void setCreateDate(String createDate) {
-        this.createDate = createDate;
+        this.createDate = createDate.replace(".0", "").replace(" ", "T");
     }
 
 }

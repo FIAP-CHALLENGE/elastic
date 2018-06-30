@@ -18,13 +18,10 @@ public class TransactionRoute extends RouteBuilder {
                 .bean(ExtractTransaction.class)
 
                 // Extract from database
-                .to("sql:" + "select * from transaction where id between # and #" + "?dataSource=dataSource")
+                .to("sql:" + "select ID, HASH, CREATE_DATE, BUYER_EMAIL, SELLER_EMAIL, VALUE from transaction where id between # and #" + "?dataSource=dataSource&outputClass=br.com.fiap.pagseguro.vo.TransactionVO")
 
                 // Validate results
                 .choice().when(simple("${body.size} > 0"))
-
-                // Transform resultset from database
-                .bean(TransformTransaction.class)
 
                 // Create bulk to elasticsearch
                 .bean(TransformTransaction.class, "createBulk")
