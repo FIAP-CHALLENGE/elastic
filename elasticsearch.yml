@@ -1,0 +1,6 @@
+## Default Elasticsearch configuration from elasticsearch-docker.
+## from https://github.com/elastic/elasticsearch-docker/blob/master/build/elasticsearch/elasticsearch.yml
+#
+cluster.name: "fiap-elastic-cluster"
+network.host: 0.0.0.0
+discovery.zen.ping.unicast.hosts: es_master

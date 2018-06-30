@@ -1,0 +1,38 @@
+version: '2'
+
+services:
+
+  elasticsearch:
+      hostname: elasticsearch.fiap.com.br
+      container_name: es_master
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4
+      volumes:
+          - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      ports:
+      - "9200:9200"
+
+  elastic-slave:
+      image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4
+      volumes:
+         - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      depends_on:
+      - elasticsearch
+      links:
+      - elasticsearch:es_master
+
+  cerebro:
+    hostname: cerebro.elasticsearch.fiap.com.br
+    image: yannart/cerebro:latest
+    ports:
+        - "9000:9000"
+    depends_on:
+          - elasticsearch
+    links:
+    - elasticsearch:es_master
+
+  oracle:
+    image: wnameless/oracle-xe-11g:latest
+    ports:
+      - "1521:1521"
+    depends_on:
+      - elasticsearch
