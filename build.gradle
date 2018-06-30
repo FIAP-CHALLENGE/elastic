@@ -26,7 +26,7 @@ mainClassName = 'br/com/fiap/pagseguro/FiapOnApplication.java'
 task fatJar(type: Jar) {
 	manifest {
         attributes 'Implementation-Title': 'Gradle Jar File Example',  
-        	'Implementation-Version': version,
+        	'Implementation-Version': '1.0.0',
         	'Main-Class': 'br/com/fiap/pagseguro/FiapOnApplication'
     }
     baseName = project.name + '-all'
