@@ -38,7 +38,7 @@ public class LoadTransaction {
          * "https://search-pntm-fon6lkaufau5dnncsv6dhmk4mq.us-east-1.es.amazonaws.com/_bulk"
          */
         restTemplate.getMessageConverters().add(0, new StringHttpMessageConverter(Charset.forName("UTF-8")));
-        final ResponseEntity<ResponseBulkInsertVO> response = restTemplate.exchange("http://localhost:9200/_bulk", HttpMethod.POST, request, ResponseBulkInsertVO.class);
+        final ResponseEntity<ResponseBulkInsertVO> response = restTemplate.exchange("https://search-pntm-fon6lkaufau5dnncsv6dhmk4mq.us-east-1.es.amazonaws.com/_bulk", HttpMethod.POST, request, ResponseBulkInsertVO.class);
 
         final ResponseBulkInsertVO bulkInsertVO = response.getBody();
 
